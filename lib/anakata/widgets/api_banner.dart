@@ -7,9 +7,10 @@ final List<String> imgList = [
   'https://anakataseries.com/images/event/1745805564.a_19.jpg',
   'https://anakataseries.com/frontend-as/assets/photo_event/ANA00834.jpg',
   'https://anakataseries.com/frontend-as/assets/photo_event/DSC02600.jpg',
+  'https://anakataseries.com/frontend-as/assets/photo_event/DSC02600.jpg',
 ];
 
-final List<Widget> imageSliders = imgList
+final List<Widget> imageBanner = imgList
     .map(
       (item) => Container(
         child: Container(

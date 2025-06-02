@@ -84,7 +84,7 @@ class _homePageState extends State<homePage>
                 autoPlayAnimationDuration: Duration(milliseconds: 800),
                 autoPlayCurve: Curves.fastOutSlowIn,
               ),
-              items: imageSliders,
+              items: imageBanner,
             ),
             Padding(
               padding: const EdgeInsets.only(
@@ -106,18 +106,16 @@ class _homePageState extends State<homePage>
             ),
             Padding(
               padding: const EdgeInsets.only(
-                left: 22,
-                right: 22,
+                left: 20,
+                right: 20,
                 top: 0,
                 bottom: 0,
               ),
               child: CarouselSlider.builder(
                 options: CarouselOptions(
-                  enableInfiniteScroll: true,
-                  aspectRatio: 2.0,
+                  aspectRatio: 3,
                   enlargeCenterPage: false,
                   viewportFraction: 1,
-                  autoPlayAnimationDuration: Duration(milliseconds: 800),
                 ),
                 itemCount: (imgList.length / 2).round(),
                 itemBuilder: (context, index, realIdx) {
@@ -128,8 +126,55 @@ class _homePageState extends State<homePage>
                       return Expanded(
                         flex: 1,
                         child: Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 10),
-                          child: Image.network(imgList[idx], fit: BoxFit.cover),
+                          margin: EdgeInsets.only(left: 5, right: 5, top: 10),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(20.0),
+                            ),
+                            child: ListView(
+                              children: [
+                                Image.network(
+                                  imgList[idx],
+                                  fit: BoxFit.cover,
+                                  width: 500.0,
+                                ),
+                                Positioned(
+                                  bottom: 0.0,
+                                  left: 0.0,
+                                  right: 0.0,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      gradient: LinearGradient(
+                                        colors: [
+                                          Color.fromARGB(200, 0, 0, 0),
+                                          Color.fromARGB(0, 0, 0, 0),
+                                        ],
+                                        begin: Alignment.bottomCenter,
+                                        end: Alignment.topCenter,
+                                      ),
+                                    ),
+                                    padding: EdgeInsets.symmetric(
+                                      vertical: 10.0,
+                                      horizontal: 20.0,
+                                    ),
+                                    child: Text(
+                                      'Design series',
+                                      style: TextStyle(
+                                        color: const Color.fromARGB(
+                                          255,
+                                          0,
+                                          0,
+                                          0,
+                                        ),
+                                        fontSize: 12.0,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
                       );
                     }).toList(),
