@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/anakata/widgets/api_banner.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter_app/anakata/widgets/faq.dart';
+import 'package:expansion_tile_group/expansion_tile_group.dart';
 
 class homePage extends StatefulWidget {
   const homePage({super.key});
@@ -30,6 +32,7 @@ class _homePageState extends State<homePage>
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: new ThemeData(scaffoldBackgroundColor: const Color(0xfff5f6f7)),
       home: Scaffold(
         appBar: AppBar(
           toolbarHeight: 80,
@@ -96,7 +99,7 @@ class _homePageState extends State<homePage>
               child: Text(
                 'Upcoming',
                 style: TextStyle(
-                  fontSize: 19,
+                  fontSize: 14,
                   fontFamily: 'Instrument_Sans_Bold',
                   color: const Color(0xff212529),
                   fontWeight: FontWeight.w600,
@@ -131,7 +134,7 @@ class _homePageState extends State<homePage>
                             borderRadius: BorderRadius.all(
                               Radius.circular(20.0),
                             ),
-                            child: ListView(
+                            child: Stack(
                               children: [
                                 Image.network(
                                   imgList[idx],
@@ -160,12 +163,7 @@ class _homePageState extends State<homePage>
                                     child: Text(
                                       'Design series',
                                       style: TextStyle(
-                                        color: const Color.fromARGB(
-                                          255,
-                                          0,
-                                          0,
-                                          0,
-                                        ),
+                                        color: Colors.white,
                                         fontSize: 12.0,
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -180,6 +178,87 @@ class _homePageState extends State<homePage>
                     }).toList(),
                   );
                 },
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                left: 25,
+                right: 25,
+                top: 15,
+                bottom: 0,
+              ),
+              child: Text(
+                'Frequently Asked Question',
+                style: TextStyle(
+                  fontSize: 14,
+                  fontFamily: 'Instrument_Sans_Bold',
+                  color: const Color(0xff212529),
+                  fontWeight: FontWeight.w600,
+                ),
+                textAlign: TextAlign.left,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                left: 25,
+                right: 25,
+                top: 10,
+                bottom: 0,
+              ),
+              child: Column(
+                children: [
+                  Container(
+                    color: const Color(0xfff5f6f7),
+                    child: ExpansionTileItem.outlined(
+                      title: const Text(
+                        'How do I register the event?',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontFamily: 'Instrument_Sans_Regular',
+                          color: const Color(0xff212529),
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      children: [
+                        const Text(
+                          'You can fill out the form manually or sign up to get access. You should check "my ticket" for barcode access to the event. All events (online and offline) only provide access to post-events within this website.',
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontFamily: 'Instrument_Sans_Regular',
+                            color: const Color(0xff212529),
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Container(
+                    color: const Color(0xfff5f6f7),
+                    child: ExpansionTileItem.outlined(
+                      title: const Text(
+                        'Where is I can my certificate?',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontFamily: 'Instrument_Sans_Regular',
+                          color: const Color(0xff212529),
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      children: [
+                        const Text(
+                          'All documents related to your participation will be uploaded to your profile. Please check regularly to avoid loss or expiration dates.',
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontFamily: 'Instrument_Sans_Regular',
+                            color: const Color(0xff212529),
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
