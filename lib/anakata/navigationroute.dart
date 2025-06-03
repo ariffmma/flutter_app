@@ -57,23 +57,24 @@ class _BottomNavigationBarExampleState
           ),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(30),
-            child: SizedBox(
-              height: 60,
+            child: MediaQuery.removePadding(
+              context: context,
+              removeBottom: true,
               child: BottomNavigationBar(
                 items: const <BottomNavigationBarItem>[
                   BottomNavigationBarItem(
                     icon: Icon(Icons.home),
-                    label: 'fgdg',
+                    label: '',
                     backgroundColor: Colors.white,
                   ),
                   BottomNavigationBarItem(
                     icon: Icon(Icons.business),
-                    label: 'dfgfdg',
+                    label: '',
                     backgroundColor: Colors.green,
                   ),
                   BottomNavigationBarItem(
                     icon: Icon(Icons.school),
-                    label: 'dfgfd',
+                    label: '',
                     backgroundColor: Colors.purple,
                   ),
                 ],
