@@ -32,9 +32,11 @@ class _homePageState extends State<homePage>
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: new ThemeData(scaffoldBackgroundColor: const Color(0xfff5f6f7)),
       home: Scaffold(
         appBar: AppBar(
+          forceMaterialTransparency: true,
           toolbarHeight: 80,
           backgroundColor: const Color(0xfff5f6f7),
           centerTitle: false,
@@ -74,20 +76,23 @@ class _homePageState extends State<homePage>
         ),
         body: ListView(
           children: <Widget>[
-            CarouselSlider(
-              options: CarouselOptions(
-                autoPlay: true,
-                enableInfiniteScroll: true,
-                viewportFraction: 0.9,
-                aspectRatio: 2 / 1,
-                enlargeCenterPage: true,
-                enlargeStrategy: CenterPageEnlargeStrategy.zoom,
-                enlargeFactor: 0.3,
-                autoPlayInterval: Duration(seconds: 3),
-                autoPlayAnimationDuration: Duration(milliseconds: 800),
-                autoPlayCurve: Curves.fastOutSlowIn,
+            Container(
+              height: MediaQuery.of(context).size.height * 0.5,
+              child: CarouselSlider(
+                options: CarouselOptions(
+                  autoPlay: true,
+                  enableInfiniteScroll: true,
+                  viewportFraction: 0.9,
+                  aspectRatio: 2 / 1,
+                  enlargeCenterPage: true,
+                  enlargeStrategy: CenterPageEnlargeStrategy.zoom,
+                  enlargeFactor: 0.3,
+                  autoPlayInterval: Duration(seconds: 8),
+                  autoPlayAnimationDuration: Duration(milliseconds: 800),
+                  autoPlayCurve: Curves.fastOutSlowIn,
+                ),
+                items: imageBanner,
               ),
-              items: imageBanner,
             ),
             Padding(
               padding: const EdgeInsets.only(
@@ -116,7 +121,7 @@ class _homePageState extends State<homePage>
               ),
               child: CarouselSlider.builder(
                 options: CarouselOptions(
-                  aspectRatio: 3,
+                  aspectRatio: 2,
                   enlargeCenterPage: false,
                   viewportFraction: 1,
                 ),
@@ -134,40 +139,53 @@ class _homePageState extends State<homePage>
                             borderRadius: BorderRadius.all(
                               Radius.circular(20.0),
                             ),
-                            child: Stack(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Image.network(
                                   imgList[idx],
                                   fit: BoxFit.cover,
                                   width: 500.0,
                                 ),
-                                Positioned(
-                                  bottom: 0.0,
-                                  left: 0.0,
-                                  right: 0.0,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      gradient: LinearGradient(
-                                        colors: [
-                                          Color.fromARGB(200, 0, 0, 0),
-                                          Color.fromARGB(0, 0, 0, 0),
-                                        ],
-                                        begin: Alignment.bottomCenter,
-                                        end: Alignment.topCenter,
+                                Container(
+                                  color: const Color.fromARGB(
+                                    255,
+                                    255,
+                                    255,
+                                    255,
+                                  ),
+                                  width: MediaQuery.of(context).size.width,
+                                  height: 55,
+                                  padding: const EdgeInsets.only(
+                                    left: 10,
+                                    right: 10,
+                                    top: 0,
+                                    bottom: 5,
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Hospital Series Palembang',
+                                        style: TextStyle(
+                                          fontFamily: 'Instrument_Sans_Regular',
+                                          color: Colors.black,
+                                          fontSize: 10,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
-                                    ),
-                                    padding: EdgeInsets.symmetric(
-                                      vertical: 10.0,
-                                      horizontal: 20.0,
-                                    ),
-                                    child: Text(
-                                      'Design series',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 12.0,
-                                        fontWeight: FontWeight.bold,
+                                      Text(
+                                        '19 June 2025',
+                                        style: TextStyle(
+                                          fontFamily: 'Instrument_Sans_Regular',
+                                          color: Colors.black38,
+                                          fontSize: 10,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
-                                    ),
+                                    ],
                                   ),
                                 ),
                               ],
@@ -205,60 +223,21 @@ class _homePageState extends State<homePage>
                 top: 10,
                 bottom: 0,
               ),
-              child: Column(
-                children: [
-                  Container(
-                    color: const Color(0xfff5f6f7),
-                    child: ExpansionTileItem.outlined(
-                      title: const Text(
-                        'How do I register the event?',
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontFamily: 'Instrument_Sans_Regular',
-                          color: const Color(0xff212529),
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      children: [
-                        const Text(
-                          'You can fill out the form manually or sign up to get access. You should check "my ticket" for barcode access to the event. All events (online and offline) only provide access to post-events within this website.',
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontFamily: 'Instrument_Sans_Regular',
-                            color: const Color(0xff212529),
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
+              child: faqList(),
+            ),
+            Center(
+              child: SizedBox(
+                width: 200.0, // Button width
+                height: 50.0, // Button height
+                child: TextButton(
+                  style: ButtonStyle(
+                    foregroundColor: MaterialStateProperty.all<Color>(
+                      Colors.blue,
                     ),
                   ),
-                  SizedBox(height: 10),
-                  Container(
-                    color: const Color(0xfff5f6f7),
-                    child: ExpansionTileItem.outlined(
-                      title: const Text(
-                        'Where is I can my certificate?',
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontFamily: 'Instrument_Sans_Regular',
-                          color: const Color(0xff212529),
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      children: [
-                        const Text(
-                          'All documents related to your participation will be uploaded to your profile. Please check regularly to avoid loss or expiration dates.',
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontFamily: 'Instrument_Sans_Regular',
-                            color: const Color(0xff212529),
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+                  onPressed: () {},
+                  child: Text('TextButton'),
+                ),
               ),
             ),
           ],

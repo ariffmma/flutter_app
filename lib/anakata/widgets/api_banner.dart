@@ -19,54 +19,11 @@ final List<Widget> imageBanner = imgList
             borderRadius: BorderRadius.all(Radius.circular(20.0)),
             child: Stack(
               children: <Widget>[
-                Image.network(item, fit: BoxFit.cover, width: 500.0),
-                Positioned(
-                  top: 0.0,
-                  left: 0.0,
-                  right: 0.0,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          Color.fromARGB(200, 0, 0, 0),
-                          Color.fromARGB(0, 0, 0, 0),
-                        ],
-                        begin: Alignment.bottomCenter,
-                        end: Alignment.topCenter,
-                      ),
-                    ),
-                    padding: EdgeInsets.symmetric(
-                      vertical: 10.0,
-                      horizontal: 20.0,
-                    ),
-                    child: Text(
-                      'Design series',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 12.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  bottom: 20.0,
-                  left: 0.0,
-                  right: 0.0,
-                  child: Container(
-                    padding: EdgeInsets.symmetric(
-                      vertical: 5.0,
-                      horizontal: 20.0,
-                    ),
-                    child: Text(
-                      'Design Series Palembang',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 14.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
+                Image.network(
+                  item,
+                  fit: BoxFit.cover,
+                  width: 500.0,
+                  height: 500,
                 ),
                 Positioned(
                   bottom: 0.0,
@@ -76,7 +33,7 @@ final List<Widget> imageBanner = imgList
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
-                          Color.fromARGB(200, 0, 0, 0),
+                          Color.fromARGB(255, 0, 0, 0),
                           Color.fromARGB(0, 0, 0, 0),
                         ],
                         begin: Alignment.bottomCenter,
@@ -85,17 +42,31 @@ final List<Widget> imageBanner = imgList
                     ),
                     padding: const EdgeInsets.only(
                       top: 10,
-                      bottom: 10,
-                      right: 20,
-                      left: 20,
+                      bottom: 30,
+                      right: 30,
+                      left: 30,
                     ),
-                    child: Text(
-                      '20/06/2025',
-                      style: TextStyle(
-                        color: const Color.fromARGB(255, 194, 194, 194),
-                        fontSize: 10.0,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Design Series Palembang',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          '20/06/2025',
+                          style: TextStyle(
+                            color: const Color.fromARGB(255, 194, 194, 194),
+                            fontSize: 12.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
