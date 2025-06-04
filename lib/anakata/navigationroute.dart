@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/anakata/home.dart';
+import 'package:flutter_app/anakata/page/dsignbit.dart';
+import 'package:flutter_app/anakata/page/homepage.dart';
+import 'package:flutter_app/anakata/page/tickets.dart';
 
 /// Flutter code sample for [BottomNavigationBar].
 
-void main() => runApp(const BottomNavigationBarExampleApp());
+void main() => runApp(const navigationroute());
 
-class BottomNavigationBarExampleApp extends StatelessWidget {
-  const BottomNavigationBarExampleApp({super.key});
+class navigationroute extends StatelessWidget {
+  const navigationroute({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +33,8 @@ class _BottomNavigationBarExampleState
 
   static const List<Widget> _widgetOptions = <Widget>[
     homePage(),
-    Text('Dsignbit'),
-    Text('Tickets'),
+    artikel(),
+    upcoming(),
   ];
 
   void _onItemTapped(int index) {
@@ -44,6 +46,7 @@ class _BottomNavigationBarExampleState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: const Color(0xfff5f6f7),
       body: Center(child: _widgetOptions.elementAt(_selectedIndex)),
       bottomNavigationBar: Padding(
@@ -52,7 +55,7 @@ class _BottomNavigationBarExampleState
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30),
             boxShadow: [
-              BoxShadow(color: Colors.black38, spreadRadius: 0, blurRadius: 10),
+              BoxShadow(color: Colors.black38, spreadRadius: 0, blurRadius: 5),
             ],
           ),
           child: ClipRRect(
@@ -62,20 +65,11 @@ class _BottomNavigationBarExampleState
               removeBottom: true,
               child: BottomNavigationBar(
                 items: const <BottomNavigationBarItem>[
+                  BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
+                  BottomNavigationBarItem(icon: Icon(Icons.article), label: ''),
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.home),
+                    icon: Icon(Icons.confirmation_number),
                     label: '',
-                    backgroundColor: Colors.white,
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.business),
-                    label: '',
-                    backgroundColor: Colors.green,
-                  ),
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.school),
-                    label: '',
-                    backgroundColor: Colors.purple,
                   ),
                 ],
                 currentIndex: _selectedIndex,
@@ -85,9 +79,9 @@ class _BottomNavigationBarExampleState
                 type: BottomNavigationBarType.fixed,
                 selectedLabelStyle: TextStyle(fontSize: 0),
                 unselectedLabelStyle: TextStyle(fontSize: 0),
+                selectedFontSize: 0,
                 showUnselectedLabels: false,
                 showSelectedLabels: false,
-                selectedFontSize: 0,
               ),
             ),
           ),
